@@ -7,10 +7,6 @@ import datetime
 import re
 
 
-# regular expression for cpu_id result = re.match(r'([a-f]|[A-F]|[0-9]){6}$', a)
-# for number licenses result3 = re.match(r'([0][0-9][0-9][0-9]|[1][0]([0-1][0-9]|[2][0-4]))$', d)
-
-
 now = datetime.datetime.now()
 
 # Generation control hash sum for name "*.lic" file
@@ -42,6 +38,9 @@ def genlic(cpu_id, license_id):
     my_file.close()
     return cpu_id + license_id
 
+if len(sys.argv) <= 2:
+    print("Not good number in parametrs console command")
+    raise SystemExit(1)
 
 #This for check standard format
 licenseid = False
@@ -55,9 +54,14 @@ if licenseid is None:
 
 if __name__ == "__main__":
     if len(sys.argv) == 3:
-        if(cpuid == False and bool(licenseid.string) == True):
+        if (cpuid == False and licenseid == False):
+            print("Not good both parametrs")
+            raise SystemExit(2)
+        elif(cpuid == False and bool(licenseid.string) == True):
+            print("Not good one parametr")
             raise SystemExit(2)
         elif(bool(cpuid.string) == True and licenseid == False):
+            print("Not good one parametr")
             raise SystemExit(3)
         elif (bool(cpuid.string) and bool(licenseid.string)):
             print(genlic(sys.argv[1], sys.argv[2]))
@@ -65,7 +69,7 @@ if __name__ == "__main__":
         else:
             raise SystemExit(4)
     else:
-        print("Неверное колличество параметров в командной строке")
+        print("Not good number in parametrs console command")
         raise SystemExit(1)
 
 
