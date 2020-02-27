@@ -6,6 +6,11 @@ import hashlib
 import datetime
 import re
 
+
+# regular expression for cpu_id result = re.match(r'([a-f]|[A-F]|[0-9]){6}$', a)
+# for number licenses result3 = re.match(r'([0][0-9][0-9][0-9]|[1][0]([0-1][0-9]|[2][0-4]))$', d)
+
+
 now = datetime.datetime.now()
 
 # Generation control hash sum for name "*.lic" file
@@ -42,7 +47,7 @@ if __name__ == "__main__":
     if len(sys.argv) == 3:
         print("Привет, {}!".format(sys.argv[1]))
         print("Привет, {}!".format(sys.argv[2]))
-        print(genlic(sys.argv[1], sys.argv[2]))
+        #print(genlic(sys.argv[1], sys.argv[2]))
         raise SystemExit(0)
     else:
         print("Неверное колличество параметров в командной строке")
