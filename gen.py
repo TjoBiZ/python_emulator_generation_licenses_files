@@ -44,19 +44,24 @@ def genlic(cpu_id, license_id):
 
 
 #This for check standard format
+licenseid = False
 cpuid = re.match(r'([a-f]|[A-F]|[0-9]){6}$', sys.argv[1])
 licenseid = re.match(r'([0][0-9][0-9][0-9]|[1][0]([0-1][0-9]|[2][0-4]))$', sys.argv[2])
+if cpuid is None:
+    cpuid = False
+if licenseid is None:
+    licenseid = False
 
 
 if __name__ == "__main__":
     if len(sys.argv) == 3:
-        if (cpuid and licenseid):
+        if(cpuid == False and bool(licenseid.string) == True):
+            raise SystemExit(2)
+        elif(bool(cpuid.string) == True and licenseid == False):
+            raise SystemExit(3)
+        elif (bool(cpuid.string) and bool(licenseid.string)):
             print(genlic(sys.argv[1], sys.argv[2]))
             raise SystemExit(0)
-        elif(cpuid == False and licenseid == True):
-            raise SystemExit(3)
-        elif(cpuid == True and licenseid == False):
-            raise SystemExit(3)
         else:
             raise SystemExit(4)
     else:
