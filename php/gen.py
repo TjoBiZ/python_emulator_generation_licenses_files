@@ -27,7 +27,6 @@ def genlic(cpu_id, license_id):
     control_hash_sum = HexToByte(cpu_id)
     #print(control_hash_sum[0])
     name_generlic = cpu_id + '_' + str(now.year) + '_' + str(now.month) + '_' + str(now.day) + '_' + str(now.hour) + str(now.minute) + '_' + license_id + '_' + str(control_hash_sum[0]) + '.lic'
-    print(name_generlic)
     my_file = open(name_generlic, 'w', encoding='utf-8')
     text_for_file = sys.argv[1] + sys.argv[2]
     # This is do secret license key
@@ -66,7 +65,7 @@ if __name__ == "__main__":
             print("Not good one parametr")
             raise SystemExit(3)
         elif (bool(cpuid.string) and bool(licenseid.string)):
-            genlic(sys.argv[1], sys.argv[2])
+            print(genlic(sys.argv[1], sys.argv[2]))
             raise SystemExit(0)
         else:
             raise SystemExit(4)

@@ -65,7 +65,7 @@ if __name__ == "__main__":
             print("Not good one parametr")
             raise SystemExit(3)
         elif (bool(cpuid.string) and bool(licenseid.string)):
-            genlic(sys.argv[1], sys.argv[2])
+            print(genlic(sys.argv[1], sys.argv[2]))
             raise SystemExit(0)
         else:
             raise SystemExit(4)
