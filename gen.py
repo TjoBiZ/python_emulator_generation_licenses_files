@@ -26,7 +26,8 @@ def genlic(cpu_id, license_id):
     license_id = license_id.upper()
     control_hash_sum = HexToByte(cpu_id)
     #print(control_hash_sum[0])
-    my_file = open(cpu_id + '_' + str(now.year) + '_' + str(now.month) + '_' + str(now.day) + '_' + str(now.hour) + str(now.minute) + '_' + license_id + '_' + str(control_hash_sum[0]) + '.lic', 'w', encoding='utf-8')
+    name_genarlic = cpu_id + '_' + str(now.year) + '_' + str(now.month) + '_' + str(now.day) + '_' + str(now.hour) + str(now.minute) + '_' + license_id + '_' + str(control_hash_sum[0]) + '.lic'
+    my_file = open(name_genarlic, 'w', encoding='utf-8')
     text_for_file = sys.argv[1] + sys.argv[2]
     # This is do secret license key
     info = "----------- This is not real key. It's emulator generator license key on Python ----------- \n"
@@ -36,7 +37,7 @@ def genlic(cpu_id, license_id):
     my_file.write(info + lic + info2)
     # Close file
     my_file.close()
-    return cpu_id + license_id
+    return name_genarlic
 
 if len(sys.argv) <= 2:
     print("Not good number in parametrs console command")
