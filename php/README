@@ -1,4 +1,4 @@
-Add to cron or notify linux or incron
+Add to cron(1 minute) or notify-tools(change directory files) linux or incron(change directory files)
 
 #* * * * *      /var/www/joker/data/www/marvelmind.tjo.biz/licensescron/./incrontab.sh >/dev/null 2>&1 ##it's work
 #* * * * *       cd /var/www/joker/data/www/marvelmind.tjo.biz/licensescron/ && /usr/bin/php index.php>/dev/null 2>&1 ##it's work every oneminuts
